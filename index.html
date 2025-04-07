@@ -3,18 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Div Layout Example</title>
-  <!-- 👇 Link to external CSS file -->
-  <link rel="stylesheet" href="style.css">
+  <title>Ranjani Portfolio</title>
+  <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
 
-  <div class="parent">
-    <div class="div1">Div 1</div>
-    <div class="div2">Div 2</div>
-    <div class="div3">Div 3</div>
-    <div class="div4">Div 4</div>
+  <div class="container">
+    <div class="sidebar">
+      <h1>Ranjani</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+
+    <div class="resizer"></div>
+
+    <div class="gallery">
+      <!-- You can loop through this div structure -->
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+    </div>
   </div>
+
+  <script>
+    // Drag to resize functionality
+    const resizer = document.querySelector('.resizer');
+    const left = document.querySelector('.sidebar');
+    const right = document.querySelector('.gallery');
+    let isResizing = false;
+
+    resizer.addEventListener('mousedown', () => {
+      isResizing = true;
+      document.body.style.cursor = "col-resize";
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isResizing) return;
+      const offsetRight = document.body.offsetWidth - (e.clientX);
+      left.style.width = `${e.clientX}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+      isResizing = false;
+      document.body.style.cursor = "default";
+    });
+  </script>
 
 </body>
 </html>
